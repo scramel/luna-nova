@@ -72,7 +72,7 @@ export default {
         &-paragraph {
             transition: .2s ease;
             p {
-                font-size: 2vw;
+                font-size: max(2vw, 20px);
                 text-indent: 5vw;
                 text-align: justify;
                 margin: 5vw 10vw;

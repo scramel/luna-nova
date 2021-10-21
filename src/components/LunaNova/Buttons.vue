@@ -29,14 +29,16 @@ export default {
         button {
             margin: 0 auto;
             border-radius: 100%;
-            height: 2.5vw;
-            width: 2.5vw;
+                
+
+            height: max(2.5vw, 40px);
+            width: max(2.5vw, 40px);
             background: transparent;
             color: white;
             border-color: white;
             box-shadow: 2px 2px 4px black;
             transition: .2s;
-            font-size: 1vw;
+            font-size: max(1vw, 15px);
             cursor: pointer;
             &:disabled {
                 pointer-events: none;
@@ -46,7 +48,7 @@ export default {
             }
         }
         div {
-            margin: 19vw 0;
+            margin: 38vh 0;
         }
     }
 </style>
