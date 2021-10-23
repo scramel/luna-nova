@@ -1,8 +1,8 @@
 <template>
   <div class="luna-nova">
+    <img class="bgimg" alt="Home image" src="@/assets/img/bg-luna-1.jpg">
     <Buttons @next="handlePage(true)" @prev="handlePage(false)" @home="$router.push('/')" :is-title="page==0" :is-end="page==book.length-1" :disabled="invisible"/>
     <Paragraphs class="luna-nova-paragraph" :class="invisible ? `luna-nova-paragraph-leave-${direction}` : `luna-nova-paragraph-enter-${direction}`" :paragraphs="book[page]"/>
-    <img id="bgimg" alt="Home image" src="@/assets/img/luna1.jpg">
   </div>
 </template>
 

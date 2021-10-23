@@ -6,7 +6,7 @@
   </div> -->
   <router-view v-slot="{ Component }">
     <transition mode="out-in" name="fade">
-      <component id="view" class="bgimg" :is="Component"/>
+      <component id="view" :is="Component"/>
     </transition>
   </router-view>
 </template>
@@ -42,7 +42,7 @@ html { background-color: #252525; }
   justify-content: center;
   align-items: center;
   background-color: rgba(0,0,0,.5);
-  z-index: 5;
+  z-index: 0;
   img {
     justify-content: center;
     margin-top: 2vh;
@@ -66,17 +66,23 @@ html { background-color: #252525; }
   justify-content: center;
   align-content: center;
   height: 100vh;
+  z-index: 0;
 }
 
-#bgimg { // Global ID for centering and scaling background images nicely
+.bgimg { // Global ID for centering and scaling background images nicely
+  position: absolute;
   top: 0;
   left: 0;
   position: fixed;
+  z-index: 0;
+  filter: brightness(.5);
+}
+
+body {
+  background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -5;
-  filter: brightness(.5);
+  background-image: url("./assets/img/bg.jpg");
 }
 
 .fade-enter-active,
