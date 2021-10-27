@@ -52,7 +52,7 @@ export default {
         font-size: max(1vw, 15px);
         cursor: pointer;
 				&-top { top: 5vh }
-				&-bottom { bottom: 5vh }
+				&-bottom { top: 90vh }
         &:disabled { pointer-events: none; }
         &:hover { transform: scale(1.1); }
 			}
