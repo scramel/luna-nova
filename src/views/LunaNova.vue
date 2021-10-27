@@ -1,49 +1,85 @@
 <template>
-  <div class="luna-nova">
+  <div class="luna-nova"  @wheel="handlePage($event.deltaY >= 0)"   >
     <img class="bgimg" alt="Home image" src="@/assets/img/bg-luna-1.jpg">
-    <Buttons @next="handlePage(true)" @prev="handlePage(false)" @home="$router.push('/')" :is-title="page==0" :is-end="page==book.length-1" :disabled="invisible"/>
-    <Paragraphs class="luna-nova-paragraph" :class="invisible ? `luna-nova-paragraph-leave-${direction}` : `luna-nova-paragraph-enter-${direction}`" :paragraphs="book[page]"/>
+    <!-- <component :is='component'/> -->
+    <Title v-show="currentPage==-1" class="luna-nova-paragraph" :class="pageTurn"/>
+    <Paragraphs v-if="currentPage>-1" class="luna-nova-paragraph" :class="pageTurn" :paragraphs="book[currentChapter][currentPage]"/>
+    <Controls 
+        @next="handlePage(true)"
+        @prev="handlePage(false)"
+        @home="$router.push('/')"
+        @goTo="handlePage($event > currentPage, $event)"
+        :is-title="currentPage==-1"
+        :is-end="currentPage==book[currentChapter].length-1"
+        :disabled="invisible"
+        :pages="book[currentChapter].length+1"
+        :currentPage="currentPage"/>
   </div>
 </template>
 
 <script>
-import Buttons from '@/components/LunaNova/Buttons.vue'
+import Controls from '@/components/LunaNova/Controls.vue'
 import Paragraphs from '@/components/LunaNova/Paragraphs.vue'
+import Title from '@/components/LunaNova/Title.vue'
 export default {
-    components: { Buttons, Paragraphs },
+    components: { Controls, Paragraphs, Title },
     data() {
         return {
             invisible: false, // toggles the enter/leave css classes
             direction: false, // if 'true' moves text up. if 'false' moves text down.
-            page: 0,
-            book: [[
-                '<h1>Luna Nova</h1>'
-            ],[
-                '<p>Mis sueños son despertados por la oscuridad en vez de la luz.</p>',
-                '<p>En tiempos pasados solía apreciar muchísimo el esplendor de la segunda; el destino, sin embargo, me obligó a convivir con la primera. Así, el calor de la mañana fue reemplazado por el frío del anochecer, y el saludo del sol fue suplantado por la visita tuya.</p>',
-                '<p>Sí, al inicio fui dura contigo, pero pronto te volviste mi mejor amiga.</p>'
+            currentPage: -1,
+            currentChapter: 0,
+            book: [[[
+                `<p>${ this.$t('lunanova.ch1.1') }.</p>`,
+                `<p>${ this.$t('lunanova.ch1.2') }.</p>`,
+                `<p>${ this.$t('lunanova.ch1.3') }.</p>`,
             ], [
-                '<p>Eres mi única compañía dentro de cuatro paredes vacías, desde literal hasta espiritualmente, solamente exceptuados mi lecho, mi ser, y regularmente... mi madre, quien trae las comidas cada noche, medianoche y madrugada.</p>',
-                '<p>Mamá toca la puerta siempre antes de entrar a pesar de comprender que yo nunca respondería, y una vez dentro, me dice sin falta palabras dulces</p>',
-                '<p><i>«Toma el tiempo que necesites»</i>, <i>«No olvides hacer tus tareas. Descansarás más si terminas pronto.»</i>, <i>«Estaré para ti toda mi vida si es necesario»</i>, <i>«Te amo»</i>.</p>'
+                `<p>${ this.$t('lunanova.ch1.4') }.</p>`,
+                `<p><i>«${ this.$t('lunanova.ch1.5') }.»</i>, <i>«${ this.$t('lunanova.ch1.6') }.»</i>, <i>«${ this.$t('lunanova.ch1.7') }.»</i>, <i>«${ this.$t('lunanova.ch1.8') }.»</i>.</p>`
             ], [
-                `<img alt="A test" src="${require('@/assets/img/logo.png')}">`
-            ]]
+                `<p>${ this.$t('lunanova.ch1.9') }.</p>`,
+                `<p>${ this.$t('lunanova.ch1.10') }.</p>`,
+            ], [
+                `<p>${ this.$t('lunanova.ch1.11') }.</p>`,
+                `<p>${ this.$t('lunanova.ch1.12') }.</p>`,
+            ], [
+                `<p>${ this.$t('lunanova.ch1.13') }.</p>`,
+                `<p>${ this.$t('lunanova.ch1.14') }.</p>`,
+                `<p>${ this.$t('lunanova.ch1.15') }.</p>`,
+            ]]]
         }
     },
     methods: {
-        handlePage(boo) {
+        handlePage(boo, page) {
+            if (page === this.currentPage || this.invisible || (boo && this.currentPage == this.book[this.currentChapter].length-1) || (!boo && this.currentPage == -1)) return
             this.direction = boo
             this.invisible = true
             setTimeout(() => {
-                boo ? this.page++ : this.page--
+                if (page) this.currentPage = page
+                else boo ? this.currentPage++ : this.currentPage--
                 this.invisible = false
             }, 500)
-        },
-        handleScroll(e) {
-            console.log(e)
         }
-    }
+    },
+    computed: {
+        pageTurn() {
+            return this.invisible ? `luna-nova-paragraph-leave-${this.direction}` : `luna-nova-paragraph-enter-${this.direction}`
+        }
+    },
+	mounted() {
+		document.addEventListener('keydown', e => {
+			switch (e.key) {
+				case "ArrowUp":
+				case "ArrowLeft":
+					this.handlePage(false)
+					break;
+				case "ArrowDown":
+				case "ArrowRight":
+					this.handlePage(true)
+					break;
+			}
+		})
+	}
 }
 </script>
 
@@ -71,6 +107,7 @@ export default {
         justify-content: center;
         &-paragraph {
             transition: .2s ease;
+            z-index: 1;
             p {
                 font-size: max(2vw, 20px);
                 text-indent: 5vw;

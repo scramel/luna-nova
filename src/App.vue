@@ -78,10 +78,19 @@ html { background-color: #252525; }
   filter: brightness(.5);
 }
 
+.f-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
 body {
-  background-size: cover;
+  background-size: auto;
   background-position: top;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-image: url("./assets/img/bg.jpg");
 }
 
