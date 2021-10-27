@@ -1,10 +1,14 @@
 <template>
 	<div class="controls">
-		<button class="btn btn-top" :disabled="disabled" @click="isTitle ? $emit('home') : $emit('prev')">{{ isTitle ? '☽︎' : '▲' }}</button>
+		<div class="f-row">
+			<button class="btn btn-top" :disabled="disabled" @click="isTitle ? $emit('home') : $emit('prev')">{{ isTitle ? '☽︎' : '▲' }}</button>
+		</div>
 		<div class="carousel">
 			<button v-for="page in pages" :key="page" :class="currentPage == page-2 ? 'active' : ''" :disabled="disabled" @click="$emit('goTo', page-2)"/>
 		</div>
-		<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('home') : $emit('next')">{{ isEnd ? '☽︎' : '▼' }}</button>
+		<div class="f-row">
+			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('home') : $emit('next')">{{ isEnd ? '☽︎' : '▼' }}</button>
+		</div>
 	</div>
 	<!-- <div class="luna-nova-controls">
 		<div class="luna-nova-buttons">
@@ -37,7 +41,6 @@ export default {
 			z-index: 1;
 			.btn {
 				position: absolute;
-        margin: 0 auto;
         border-radius: 100%;
         height: max(2.5vw, 40px);
         width: max(2.5vw, 40px);
@@ -62,7 +65,7 @@ export default {
 				right: 0;
 				top: 0;
 				z-index: 1;
-				margin-right: 2vw;
+				margin-right: 3vw;
 				height: 100%;
 				button {
 					transition: .2s;

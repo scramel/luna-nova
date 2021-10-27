@@ -49,7 +49,7 @@ export default {
 				5px -5px 0 rgba(0,0,0,.5),
 				-5px -5px 0 rgba(0,0,0,.5);
 		}
-		p { margin: 0; padding: 0; text-indent: 0; }
+		p { margin: 0 10vw; padding: 0; text-indent: 0; }
 	}
 	iframe {
 		left: 0 !important;
