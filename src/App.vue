@@ -70,11 +70,12 @@ html { background-color: #252525; }
 }
 
 .bgimg { // Global ID for centering and scaling background images nicely
-  position: absolute;
-  top: 0;
-  left: 0;
   position: fixed;
-  z-index: 0;
+  object-fit: cover;
+  height: 100vh;
+  min-width: 100vw;
+  transform: translate(calc(50vw - 50%));
+  margin: 0 auto;
   filter: brightness(.5);
 }
 

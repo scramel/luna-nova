@@ -1,9 +1,9 @@
 <template>
-  <div class="luna-nova"  @wheel="handlePage($event.deltaY >= 0)"   >
+  <div class="luna-nova"  @wheel="handlePage($event.deltaY >= 0)">
     <img class="bgimg" alt="Home image" src="@/assets/img/bg-luna-1.jpg">
     <!-- <component :is='component'/> -->
     <Title v-show="currentPage==-1" class="luna-nova-paragraph" :class="pageTurn"/>
-    <Paragraphs v-if="currentPage>-1" class="luna-nova-paragraph" :class="pageTurn" :paragraphs="book[currentChapter][currentPage]"/>
+    <Pages v-if="currentPage>-1" class="luna-nova-paragraph" :class="pageTurn" :paragraphs="book[currentChapter][currentPage]"/>
     <Controls 
         @next="handlePage(true)"
         @prev="handlePage(false)"
@@ -19,34 +19,18 @@
 
 <script>
 import Controls from '@/components/LunaNova/Controls.vue'
-import Paragraphs from '@/components/LunaNova/Paragraphs.vue'
+import Pages from '@/components/LunaNova/Pages.vue'
 import Title from '@/components/LunaNova/Title.vue'
+import text from '@/components/LunaNova/text.js'
 export default {
-    components: { Controls, Paragraphs, Title },
+    components: { Controls, Pages, Title },
     data() {
         return {
             invisible: false, // toggles the enter/leave css classes
             direction: false, // if 'true' moves text up. if 'false' moves text down.
             currentPage: -1,
             currentChapter: 0,
-            book: [[[
-                `<p>${ this.$t('lunanova.ch1.1') }.</p>`,
-                `<p>${ this.$t('lunanova.ch1.2') }.</p>`,
-                `<p>${ this.$t('lunanova.ch1.3') }.</p>`,
-            ], [
-                `<p>${ this.$t('lunanova.ch1.4') }.</p>`,
-                `<p><i>«${ this.$t('lunanova.ch1.5') }.»</i>, <i>«${ this.$t('lunanova.ch1.6') }.»</i>, <i>«${ this.$t('lunanova.ch1.7') }.»</i>, <i>«${ this.$t('lunanova.ch1.8') }.»</i>.</p>`
-            ], [
-                `<p>${ this.$t('lunanova.ch1.9') }.</p>`,
-                `<p>${ this.$t('lunanova.ch1.10') }.</p>`,
-            ], [
-                `<p>${ this.$t('lunanova.ch1.11') }.</p>`,
-                `<p>${ this.$t('lunanova.ch1.12') }.</p>`,
-            ], [
-                `<p>${ this.$t('lunanova.ch1.13') }.</p>`,
-                `<p>${ this.$t('lunanova.ch1.14') }.</p>`,
-                `<p>${ this.$t('lunanova.ch1.15') }.</p>`,
-            ]]]
+            book: text(this)
         }
     },
     methods: {
@@ -105,6 +89,10 @@ export default {
         flex-direction: column;
         align-content: center;
         justify-content: center;
+        background-size: auto;
+        background-position: top;
+        background-repeat: repeat;
+        background-image: url("../assets/img/bg-luna-1.jpg");
         &-paragraph {
             transition: .2s ease;
             z-index: 1;

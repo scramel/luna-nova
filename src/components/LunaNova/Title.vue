@@ -1,8 +1,8 @@
 <template>
 	<div class="f-row">
 		<div class="title">
-			<h1>Luna Nova</h1>
-			<p>A short story about the slow process of overcoming fear.</p>
+			<!-- <h1>Luna Nova</h1> -->
+			<!-- <p>A short story about the slow process of overcoming fear.</p> -->
 			<br>
 			<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1147804189%3Fsecret_token%3Ds-7MpzzpkjGj7&color=%2324232a&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true&play=repeat"
 				id="sc-widget"
