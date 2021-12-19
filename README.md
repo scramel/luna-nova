@@ -1,4 +1,4 @@
-# works.git
+# luna-nova.git
 
 ## Project setup
 ```
