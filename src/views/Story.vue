@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import Controls from '@/components/LunaNova/Controls.vue'
-import Pages from '@/components/LunaNova/Pages.vue'
-import Title from '@/components/LunaNova/Title.vue'
-import text from '@/components/LunaNova/text.js'
+import Controls from '@/components/Controls.vue'
+import Pages from '@/components/Pages.vue'
+import Title from '@/components/Title.vue'
+import text from '@/components/text.js'
 export default {
     components: { Controls, Pages, Title },
     data() {
@@ -96,26 +96,6 @@ export default {
         &-paragraph {
             transition: .2s ease;
             z-index: 1;
-            p {
-                font-size: max(2vw, 20px);
-                text-indent: 5vw;
-                text-align: justify;
-                margin: 5vw 10vw;
-                text-shadow: -2px 2px 2px #000,
-                    2px 2px 2px #000,
-                    2px -2px 0 #000,
-                    -2px -2px 0 #000,
-                    -3px 3px 3px rgba(0,0,0,.5),
-                    3px 3px 3px rgba(0,0,0,.5),
-                    3px -3px 0 rgba(0,0,0,.5),
-                    -3px -3px 0 rgba(0,0,0,.5);
-            }
-            h1 {
-                font-family: ClickerScript;
-                font-weight: normal;
-                font-size: 10vw;
-                text-align: center;
-            }
             img {
                 display: flex;
                 max-height: 50vh;

@@ -30,9 +30,39 @@ html { background-color: #252525; }
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #f3f3f3;
-  font-size: 4vh;
+  font-size: max(2vw, 20px);
   overflow: hidden;
   a { color: white; }
+  p {
+    font-size: max(2vw, 20px);
+    text-indent: 5vw;
+    text-align: justify;
+    margin: 5vw 10vw;
+    text-shadow: -2px 2px 2px #000,
+      2px 2px 2px #000,
+      2px -2px 0 #000,
+      -2px -2px 0 #000,
+      -3px 3px 3px rgba(0,0,0,.5),
+      3px 3px 3px rgba(0,0,0,.5),
+      3px -3px 0 rgba(0,0,0,.5),
+      -3px -3px 0 rgba(0,0,0,.5);
+  }
+  h1 {
+    font-family: ClickerScript;
+    font-weight: normal;
+    font-size: max(10vw, 50px);
+    text-align: center;
+		margin-bottom: -2vw;
+    cursor: default;
+		text-shadow: -3px 3px 3px #000,
+			3px 3px 3px #000,
+			3px -3px 0 #000,
+			-3px -3px 0 #000,
+			-5px 5px 5px rgba(0,0,0,.5),
+			5px 5px 5px rgba(0,0,0,.5),
+			5px -5px 0 rgba(0,0,0,.5),
+			-5px -5px 0 rgba(0,0,0,.5);
+	}
 }
 
 #nav { // Navbar
@@ -88,11 +118,25 @@ html { background-color: #252525; }
   }
 }
 
+.f-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// body {
+//   background-size: auto;
+//   background-position: top;
+//   background-repeat: repeat;
+//   background-image: url("./assets/img/bg.jpg");
+// }
+
 body {
-  background-size: auto;
-  background-position: top;
-  background-repeat: repeat;
-  background-image: url("./assets/img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("./assets/img/bg-luna-2.jpg");
 }
 
 .fade-enter-active,

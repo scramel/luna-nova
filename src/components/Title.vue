@@ -38,17 +38,6 @@ export default {
 <style lang="scss" scoped>
 	.title {
 		// margin-right: 4vw;
-		h1 {
-			margin-bottom: -2vw;
-			text-shadow: -3px 3px 3px #000,
-				3px 3px 3px #000,
-				3px -3px 0 #000,
-				-3px -3px 0 #000,
-				-5px 5px 5px rgba(0,0,0,.5),
-				5px 5px 5px rgba(0,0,0,.5),
-				5px -5px 0 rgba(0,0,0,.5),
-				-5px -5px 0 rgba(0,0,0,.5);
-		}
 		p { margin: 0 10vw; padding: 0; text-indent: 0; }
 	}
 	iframe {
