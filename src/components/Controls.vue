@@ -52,7 +52,13 @@ export default {
 			font-size: max(1vw, 15px);
 			cursor: pointer;
 			&-top { top: 5vh }
-			&-bottom { bottom: 5vh }
+			&-bottom { 
+				bottom: 5vh;
+				@media (max-width: 768px) {
+					bottom: unset;
+					top: 90vh;
+				}
+			}
 			&:disabled { pointer-events: none; }
 			&:hover { transform: scale(1.1); }
 		}
@@ -66,7 +72,7 @@ export default {
 			top: 0;
 			z-index: 1;
 			margin-right: 3vw;
-			height: 100%;
+			height: 100vh;
 			button {
 				transition: .2s;
 				cursor: pointer;
