@@ -2,17 +2,18 @@
   <div class="luna-nova"  @wheel="handlePage($event.deltaY >= 0)">
     <img class="bgimg" alt="Home image" src="@/assets/img/bg-luna-1.jpg">
     <!-- <component :is='component'/> -->
-    <Title v-show="currentPage==-1" class="luna-nova-paragraph" :class="pageTurn"/>
-    <Pages v-if="currentPage>-1" class="luna-nova-paragraph" :class="pageTurn" :paragraphs="book[currentChapter][currentPage]"/>
+    <Title v-show="currentPage==-1" class="luna-nova-paragraph" :class="pageTurn" :pause="pause" :currentAct="currentAct"/>
+    <Pages v-if="currentPage>-1" class="luna-nova-paragraph" :class="pageTurn" :paragraphs="book[currentAct][currentPage]"/>
     <Controls 
         @next="handlePage(true)"
         @prev="handlePage(false)"
-        @home="$router.push('/')"
+        @home="pause += 1; $router.push('/')"
+        @end="handlePage(true)"
         @goTo="handlePage($event > currentPage, $event)"
         :is-title="currentPage==-1"
-        :is-end="currentPage==book[currentChapter].length-1"
+        :is-end="currentPage==book[currentAct].length-1"
         :disabled="invisible"
-        :pages="book[currentChapter].length+1"
+        :pages="book[currentAct].length+1"
         :currentPage="currentPage"/>
   </div>
 </template>
@@ -28,21 +29,39 @@ export default {
         return {
             invisible: false, // toggles the enter/leave css classes
             direction: false, // if 'true' moves text up. if 'false' moves text down.
+            pause: 0, // pauses music
+            currentAct: this.isInvalidAct() ? 0 : parseInt(this.$route.query.act),
             currentPage: -1,
-            currentChapter: 0,
             book: text(this)
         }
     },
     methods: {
         handlePage(boo, page) {
-            if (page === this.currentPage || this.invisible || (boo && this.currentPage == this.book[this.currentChapter].length-1) || (!boo && this.currentPage == -1)) return
+            if (page === this.currentPage || this.invisible || (!boo && this.currentPage == -1)) return
+            let end = (boo && this.currentPage == this.book[this.currentAct].length-1)
+            if (end) this.pause += 1
             this.direction = boo
             this.invisible = true
             setTimeout(() => {
-                if (page) this.currentPage = page
+                if (page || page===0) this.currentPage = page
                 else boo ? this.currentPage++ : this.currentPage--
+                // Move to next act if it was the end of the current act
+                if (end) {
+                    // Go back to menu if the end of text was reached
+                    return this.$router.push(`/`)
+                    // eslint-disable-next-line
+                    if (parseInt(this.$route.query.act) === this.book.length-1) return this.$router.push(`/`)
+                    // Else move to the next act
+                    this.currentPage = -1
+                    this.currentAct += 1
+                    this.$router.push(`/story?act=${this.currentAct}`)
+                }
                 this.invisible = false
             }, 500)
+        },
+        isInvalidAct() {
+            let act = parseInt(this.$route.query.act)
+            return isNaN(act) || 0 > act || act > 4
         }
     },
     computed: {
@@ -51,6 +70,7 @@ export default {
         }
     },
 	mounted() {
+        if (this.isInvalidAct()) this.$router.push(`/story?act=0`)
 		document.addEventListener('keydown', e => {
 			switch (e.key) {
 				case "ArrowUp":

@@ -7,7 +7,7 @@
 			<button v-for="page in pages" :key="page" :class="currentPage == page-2 ? 'active' : ''" :disabled="disabled" @click="$emit('goTo', page-2)"/>
 		</div>
 		<div class="f-row">
-			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('home') : $emit('next')">{{ isEnd ? '☽︎' : '▼' }}</button>
+			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('end') : $emit('next')">{{ isEnd ? '☽︎' : '▼' }}</button>
 		</div>
 	</div>
 	<!-- <div class="luna-nova-controls">
@@ -52,7 +52,7 @@ export default {
 			font-size: max(1vw, 15px);
 			cursor: pointer;
 			&-top { top: 5vh }
-			&-bottom { top: 90vh }
+			&-bottom { bottom: 5vh }
 			&:disabled { pointer-events: none; }
 			&:hover { transform: scale(1.1); }
 		}

@@ -11,6 +11,14 @@
   </router-view>
 </template>
 
+<script>
+export default {
+  mounted() {
+    this.$i18n.locale = this.$cookies.get('locale') || 'en'
+  }
+}
+</script>
+
 <style lang="scss">
 *,p  { margin: 0; padding: 0; }
 html { background-color: #252525; }
@@ -24,6 +32,17 @@ html { background-color: #252525; }
   src: url(./assets/fonts/ClickerScript-Regular.ttf);
 }
 
+@mixin text-shadow {
+  text-shadow: -2px 2px 2px #000,
+    2px 2px 2px #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    -3px 3px 3px rgba(0,0,0,.5),
+    3px 3px 3px rgba(0,0,0,.5),
+    3px -3px 0 rgba(0,0,0,.5),
+    -3px -3px 0 rgba(0,0,0,.5);
+}
+
 #app { // Main aPP styles
   font-family: Spectral-Regular, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,25 +51,20 @@ html { background-color: #252525; }
   color: #f3f3f3;
   font-size: max(2vw, 20px);
   overflow: hidden;
-  a { color: white; }
+  a { 
+    @include text-shadow;
+    color: white;
+  }
   p {
+    @include text-shadow;
     font-size: max(2vw, 20px);
     text-indent: 5vw;
     text-align: justify;
     margin: 5vw 10vw;
-    text-shadow: -2px 2px 2px #000,
-      2px 2px 2px #000,
-      2px -2px 0 #000,
-      -2px -2px 0 #000,
-      -3px 3px 3px rgba(0,0,0,.5),
-      3px 3px 3px rgba(0,0,0,.5),
-      3px -3px 0 rgba(0,0,0,.5),
-      -3px -3px 0 rgba(0,0,0,.5);
   }
-  h1 {
+  h1, h2 {
     font-family: ClickerScript;
     font-weight: normal;
-    font-size: max(10vw, 50px);
     text-align: center;
 		margin-bottom: -2vw;
     cursor: default;
@@ -63,6 +77,8 @@ html { background-color: #252525; }
 			5px -5px 0 rgba(0,0,0,.5),
 			-5px -5px 0 rgba(0,0,0,.5);
 	}
+  h1 { font-size: max(9vw, 60px); }
+  h2 { font-size: max(8vw, 60px); }
 }
 
 #nav { // Navbar
