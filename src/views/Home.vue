@@ -11,7 +11,7 @@
       <br>
       <router-link to="">{{ $t('extras') }}</router-link>
       <router-link to="" class="available" @click="toggleLocale">{{ $t('language') }}</router-link>
-      <router-link to="/credits" class="available">{{ $t('credits') }}</router-link>
+      <router-link to="" class="">{{ $t('credits') }}</router-link>
     </div>
   </div>
 </template>
