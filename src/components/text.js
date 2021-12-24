@@ -73,6 +73,8 @@ export default (vm) => [
     ], [
         `<p>${ vm.$t('lunanova.ch1.56') }</p>`,
         `<p>${ vm.$t('lunanova.ch1.57') }.</p>`,
+    ], [
+        `<img alt="Darya" src="${require('@/assets/img/darya.png')}">`,
     ]], [[ // ACT 1
         `<p>${ vm.$t('lunanova.ch1.55') }</p>`,
     ], [

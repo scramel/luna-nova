@@ -118,7 +118,7 @@ export default {
             z-index: 1;
             img {
                 display: flex;
-                max-height: 50vh;
+                max-height: 60vh;
                 margin: auto;
             }
             &-enter-true { animation: luna-nova-slidein-next .4s forwards ease-out; }

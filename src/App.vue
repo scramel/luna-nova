@@ -1,11 +1,6 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/luna-nova">Luna Nova</router-link>
-    <router-link to="/"><img src="@/assets/img/logo.png" alt="Logo"></router-link>
-    <router-link to="/about">About</router-link>
-  </div> -->
   <router-view v-slot="{ Component }">
-    <transition mode="out-in" name="fade">
+    <transition mode="out-in" name="zoom">
       <component id="view" :is="Component"/>
     </transition>
   </router-view>
@@ -13,7 +8,7 @@
 
 <script>
 export default {
-  mounted() {
+  mounted() { // Sets locale once mounted
     this.$i18n.locale = this.$cookies.get('locale') || 'en'
   }
 }
@@ -22,7 +17,14 @@ export default {
 <style lang="scss">
 *,p  { margin: 0; padding: 0; }
 html { background-color: #252525; }
+body { // Page bg image
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("./assets/img/bg-luna-2.jpg");
+}
 
+// FONTS
 @font-face {
   font-family: Spectral-Regular;
   src: url(./assets/fonts/Spectral-Regular.ttf);
@@ -32,6 +34,7 @@ html { background-color: #252525; }
   src: url(./assets/fonts/ClickerScript-Regular.ttf);
 }
 
+// MIXINS
 @mixin text-shadow {
   text-shadow: -2px 2px 2px #000,
     2px 2px 2px #000,
@@ -43,7 +46,25 @@ html { background-color: #252525; }
     -3px -3px 0 rgba(0,0,0,.5);
 }
 
-#app { // Main aPP styles
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 5px;
+  @media (max-width: 768px) { width: 3px; }
+  &-track {
+    background: rgba(0, 0, 0, .4); 
+    border-radius: 10px;
+  }
+  &-thumb {
+  border-radius: 10px;
+  transition: .2s;
+  background: rgb(255, 255, 255, .6); 
+    &:hover {
+      background: rgba(255, 255, 255, .8); 
+    }
+  }
+}
+
+#app { // Main app styles
   font-family: Spectral-Regular, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,6 +75,19 @@ html { background-color: #252525; }
   a { 
     @include text-shadow;
     color: white;
+    text-decoration: none;
+    transition: .2s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(1);
+    }
+    &.unavailable {
+      cursor: not-allowed;
+      filter: brightness(.5);
+    }
   }
   p {
     @include text-shadow;
@@ -62,7 +96,7 @@ html { background-color: #252525; }
     text-align: justify;
     margin: 5vw 10vw;
   }
-  h1, h2 {
+  h1, h2, h3, h4 {
     font-family: ClickerScript;
     font-weight: normal;
     text-align: center;
@@ -79,9 +113,11 @@ html { background-color: #252525; }
 	}
   h1 { font-size: max(9vw, 60px); }
   h2 { font-size: max(8vw, 60px); }
+  h3 { font-size: max(6vw, 60px);  margin: 0; }
+  h4 { font-size: max(2vw, 26px);  margin: 0; font-family: spectral; }
 }
 
-#nav { // Navbar
+#nav { // Navbar -unused-
   position: absolute;
   display: flex;
   width: 100%;
@@ -89,12 +125,7 @@ html { background-color: #252525; }
   align-items: center;
   background-color: rgba(0,0,0,.5);
   z-index: 0;
-  img {
-    justify-content: center;
-    margin-top: 2vh;
-    height: 12vh;
-  }
-  a {
+  a { // Navbar links
     text-align: center;
     width: 10vw;
     font-weight: bold;
@@ -106,7 +137,7 @@ html { background-color: #252525; }
   }
 }
 
-#view {
+#view { // CSS for all views
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,7 +146,7 @@ html { background-color: #252525; }
   z-index: 0;
 }
 
-.bgimg { // Global ID for centering and scaling background images nicely
+.bgimg { // For centering and scaling background images nicely
   position: fixed;
   object-fit: cover;
   height: 100vh;
@@ -125,7 +156,7 @@ html { background-color: #252525; }
   filter: brightness(.5);
 }
 
-.f-row {
+.f-row { // Flex row
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,33 +165,20 @@ html { background-color: #252525; }
   }
 }
 
-.f-col {
+.f-col { // Flex column
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-// body {
-//   background-size: auto;
-//   background-position: top;
-//   background-repeat: repeat;
-//   background-image: url("./assets/img/bg.jpg");
-// }
-
-body {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url("./assets/img/bg-luna-2.jpg");
-}
-
-.fade-enter-active,
-.fade-leave-active {
+// TRANSITIONS
+.zoom-enter-active,
+.zoom-leave-active {
   transition: all .8s ease;
 }
-.fade-enter-from,
-.fade-leave-to {
+.zoom-enter-from,
+.zoom-leave-to {
   opacity: 0;
   transform: scale(1.1);
 }

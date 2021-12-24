@@ -1,13 +1,23 @@
 <template>
 	<div class="controls">
 		<div class="f-row">
-			<button class="btn btn-top" :disabled="disabled" @click="isTitle ? $emit('home') : $emit('prev')">{{ isTitle ? '☽︎' : '▲' }}</button>
+			<button class="btn btn-top" :disabled="disabled" @click="isTitle ? $emit('home') : $emit('prev')">
+				<transition name="fade">
+					<img v-show="isTitle && !disabled" class="arrow arrow-1" alt="Instruction 1" src="@/assets/img/arrow-1.png">
+				</transition>
+				{{ isTitle ? '☽︎' : '▲' }}
+			</button>
 		</div>
 		<div class="carousel">
 			<button v-for="page in pages" :key="page" :class="currentPage == page-2 ? 'active' : ''" :disabled="disabled" @click="$emit('goTo', page-2)"/>
 		</div>
 		<div class="f-row">
-			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('end') : $emit('next')">{{ isEnd ? '☽︎' : '▼' }}</button>
+			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('end') : $emit('next')">
+				<transition name="fade">
+					<img v-show="isTitle && !disabled" class="arrow arrow-2" alt="Instruction 2" src="@/assets/img/arrow-2.png">
+				</transition>
+				{{ isEnd ? '☽︎' : '▼' }}
+			</button>
 		</div>
 	</div>
 	<!-- <div class="luna-nova-controls">
@@ -39,6 +49,21 @@ export default {
 <style lang="scss" scoped>
 	.controls {
 		z-index: 1;
+		.arrow {
+			position: absolute;
+			width: clamp(200px, 17vw, 300px);
+			transition: .2s;
+			pointer-events: none;
+			@media (max-width: 1200px) { display: none; }
+			&-1 {
+				top: -3.5vh;
+				right: 3vw;
+			}
+			&-2 {
+				bottom: -4vh;
+				left: 2vw;
+			}
+		}
 		.btn {
 			position: absolute;
 			border-radius: 100%;
@@ -59,8 +84,19 @@ export default {
 					top: 90vh;
 				}
 			}
-			&:disabled { pointer-events: none; }
-			&:hover { transform: scale(1.1); }
+			&:disabled { 
+				transform: scale(1) !important;
+				pointer-events: none;
+				.arrow {
+					transform: scale(1);
+				}
+			}
+			&:hover { 
+				transform: scale(1.1);
+				.arrow {
+					transform: scale(.9);
+				}
+			}
 		}
 		.carousel {
 			position: absolute;
@@ -87,5 +123,14 @@ export default {
 				&.active { background-color: white; }
 			}
 		}	
+	}
+	// Transitions
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: opacity .5s !important;
+	}
+	.fade-enter-from,
+	.fade-leave-to {
+		opacity: 0 !important;
 	}
 </style>

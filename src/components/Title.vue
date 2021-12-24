@@ -1,7 +1,12 @@
 <template>
 	<div class="f-row">
 		<div class="title">
-			<h2>{{ $t(`act${currentAct}`) }}</h2>
+			<h2>
+				{{ $t(`act${currentAct}`) }}
+				<transition name="fade">
+					<img class="arrow arrow-3" alt="Instruction 3" src="@/assets/img/arrow-3.png">
+				</transition>
+			</h2>
 			<!-- <p>A short story about the slow process of overcoming fear.</p> -->
 			<br>
 			<iframe
@@ -94,11 +99,20 @@ export default {
 	.title {
 		// margin-right: 4vw;
 		p { margin: 0 10vw; padding: 0; text-indent: 0; }
+		h2 { position: relative }
 	}
 	iframe {
 		left: 0 !important;
 		width: 40vh !important;
 		height: 40vh !important;
 		position: initial !important;
+	}
+	.arrow-3 {
+		position: absolute;
+		z-index: 1;
+		top: 12vw;
+		right: 26.5vw;
+		width: clamp(200px, 17vw, 300px);
+		@media (max-width: 1200px) { display: none; }
 	}
 </style>

@@ -9,6 +9,18 @@ export default {
       extras: 'Extras',
       language: 'Language: English',
       credits: 'Credits',
+      back: 'Back',
+      thanks: 'Thank you for reading!',
+      credit: {
+        scramel: 'Writer, composer, illustrator, website developer',
+        scar: 'Composer',
+        walker: 'English translation, alternative ending',
+        lordi: 'Website icon, proofreader',
+        kennypyro: 'Illustrator',
+        neatofirebird: 'Cool friend (and proofreader)',
+        keensbakery: 'Proofreader (english translation)',
+        medu: 'Proofreader'
+      },
       lunanova: {
         ch1: {
           1: 'My dreams are awakened by the darkness instead of the light',
@@ -81,6 +93,18 @@ export default {
       extras: 'Extras',
       language: 'Idioma: Español',
       credits: 'Créditos',
+      back: 'Volver',
+      thanks: '¡Gracias por leer!',
+      credit: {
+        scramel: 'Escritor, compositor, ilustrador, desarrollador web',
+        scar: 'Compositor',
+        walker: 'Traducción inglesa, final alternativo',
+        lordi: 'Ícono del sitio web, proofreader',
+        kennypyro: 'Ilustrador',
+        neatofirebird: 'Amigo genial (y proofreader)',
+        keensbakery: 'Proofreader (traducción inglesa)',
+        medu: 'Proofreader'
+      },
       lunanova: {
         ch1: {
           1: 'Mis sueños son despertados por la oscuridad en vez de la luz',
