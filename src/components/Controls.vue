@@ -3,7 +3,7 @@
 		<div class="f-row">
 			<button class="btn btn-top" :disabled="disabled" @click="isTitle ? $emit('home') : $emit('prev')">
 				<transition name="fade">
-					<img v-show="isTitle && !disabled" class="arrow arrow-1" alt="Instruction 1" src="@/assets/img/arrow-1.png">
+					<img v-show="isTitle && !disabled" class="arrow arrow-1" alt="Instruction 1" :src="require(`@/assets/img/arrow-1-${locale}.png`)">
 				</transition>
 				{{ isTitle ? '☽︎' : '▲' }}
 			</button>
@@ -14,7 +14,7 @@
 		<div class="f-row">
 			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('end') : $emit('next')">
 				<transition name="fade">
-					<img v-show="isTitle && !disabled" class="arrow arrow-2" alt="Instruction 2" src="@/assets/img/arrow-2.png">
+					<img v-show="isTitle && !disabled" class="arrow arrow-2" alt="Instruction 2" :src="require(`@/assets/img/arrow-2-${locale}.png`)">
 				</transition>
 				{{ isEnd ? '☽︎' : '▼' }}
 			</button>
@@ -42,6 +42,11 @@ export default {
 		disabled: Boolean,
 		pages: Number,
 		currentPage: Number
+	},
+	data() {
+		return {
+			locale: this.$cookies.get('locale') || 'en'
+		}
 	}
 }
 </script>

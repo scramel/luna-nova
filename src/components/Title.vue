@@ -4,7 +4,7 @@
 			<h2>
 				{{ $t(`act${currentAct}`) }}
 				<transition name="fade">
-					<img class="arrow arrow-3" alt="Instruction 3" src="@/assets/img/arrow-3.png">
+					<img class="arrow arrow-3" alt="Instruction 3" :src="require(`@/assets/img/arrow-3-${$cookies.get('locale') || 'en'}.png`)">
 				</transition>
 			</h2>
 			<!-- <p>A short story about the slow process of overcoming fear.</p> -->
