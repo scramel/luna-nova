@@ -7,7 +7,6 @@
 					<img class="arrow arrow-3" alt="Instruction 3" :src="require(`@/assets/img/arrow-3-${$cookies.get('locale') || 'en'}.png`)">
 				</transition>
 			</h2>
-			<!-- <p>A short story about the slow process of overcoming fear.</p> -->
 			<br>
 			<iframe
 				:id="`sc-widget`"
@@ -24,30 +23,8 @@
 				scrolling="no"
 				frameborder="no">
 			</iframe>
-			<!-- <iframe v-for="(track, index) in tracks" :key="index"
-				v-show="index==currentAct"
-				:id="`sc-widget-${index}`"
-				:src="`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${track}
-					&color=%2324232a
-					&auto_play=false
-					&hide_related=false
-					&show_comments=false
-					&show_user=true
-					&show_reposts=false
-					&show_teaser=true
-					&visual=true
-					&play=repeat`"
-				scrolling="no"
-				frameborder="no">
-			</iframe> -->
-			<!-- <br>
-			<p>Click the moon (☽︎) to return to the main screen.</p>
-			<p>Click the arrow (▼) to advance.</p>
-			<br>
-			<label>Music by Scramel & SCAR.</label> -->
 			<br>
 		</div>
-		<!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1147804189%3Fsecret_token%3Ds-7MpzzpkjGj7&color=%2324232a&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe> -->
 	</div>
 </template>
 

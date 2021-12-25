@@ -72,7 +72,7 @@ export default {
       }, {
         name: 'Lord I.',
         role: this.$t('credit.lordi'),
-        img: 'default'
+        img: 'lordi'
       }, {
         name: 'KennyPyro',
         role: this.$t('credit.kennypyro'),
