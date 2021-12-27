@@ -1,28 +1,28 @@
 <template>
 	<div class="f-row">
 		<div class="title">
-			<h2>
-				{{ $t(`act${currentAct}`) }}
+			<h2>{{ $t(`act${currentAct}`) }}</h2>
+			<br>
+			<div>
 				<transition name="fade">
 					<img class="arrow arrow-3" alt="Instruction 3" :src="require(`@/assets/img/arrow-3-${$cookies.get('locale') || 'en'}.png`)">
 				</transition>
-			</h2>
-			<br>
-			<iframe
-				:id="`sc-widget`"
-				:src="`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${tracks[currentAct]}
-					&color=%2324232a
-					&auto_play=false
-					&hide_related=false
-					&show_comments=false
-					&show_user=true
-					&show_reposts=false
-					&show_teaser=true
-					&visual=true
-					&play=repeat`"
-				scrolling="no"
-				frameborder="no">
-			</iframe>
+				<iframe
+					:id="`sc-widget`"
+					:src="`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${tracks[currentAct]}
+						&color=%2324232a
+						&auto_play=false
+						&hide_related=false
+						&show_comments=false
+						&show_user=true
+						&show_reposts=false
+						&show_teaser=true
+						&visual=true
+						&play=repeat`"
+					scrolling="no"
+					frameborder="no">
+				</iframe>
+			</div>
 			<br>
 		</div>
 	</div>
@@ -74,7 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 	.title {
-		// margin-right: 4vw;
 		p { margin: 0 10vw; padding: 0; text-indent: 0; }
 		h2 { position: relative }
 	}
@@ -87,8 +86,8 @@ export default {
 	.arrow-3 {
 		position: absolute;
 		z-index: 1;
-		top: 12vw;
-		right: 26.5vw;
+		top: 24vh;
+		right: 61vw;
 		width: clamp(200px, 17vw, 300px);
 		@media (max-width: 1200px) { display: none; }
 	}

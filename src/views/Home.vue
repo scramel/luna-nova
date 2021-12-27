@@ -1,8 +1,8 @@
 <template>
   <div class="home">
+    <link rel="icon" href="@/assets/img/bg-luna-1.jpg">
     <div class="chapters f-col">
       <h1>Luna Nova</h1>
-      <!-- <router-link to="/story?act=1">Continuar</router-link> -->
       <router-link to="/story?act=0">{{ $t('act0') }}</router-link>
       <router-link to="" class="unavailable">{{ $t('act1') }}</router-link>
       <router-link to="" class="unavailable">{{ $t('act2') }}</router-link>
