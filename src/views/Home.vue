@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <link rel="icon" href="@/assets/img/bg-luna-1.jpg">
+    <link rel="prefetch" :href="require('@/assets/img/bg-luna-1.jpg')">
+    <link rel="prefetch" :href="require(`@/assets/img/arrow-1-${locale}.png`)">
+    <link rel="prefetch" :href="require(`@/assets/img/arrow-2-${locale}.png`)">
+    <link rel="prefetch" :href="require(`@/assets/img/arrow-3-${locale}.png`)">
     <div class="chapters f-col">
       <h1>Luna Nova</h1>
       <router-link to="/story?act=0">{{ $t('act0') }}</router-link>
@@ -18,10 +21,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      locale: this.$cookies.get('locale') || 'en'
+    }
+  },
   methods: {
     toggleLocale() {
       this.$i18n.locale = this.$i18n.locale === 'en' ? 'es' : 'en'
       this.$cookies.set('locale', this.$i18n.locale)
+      this.locale = this.$cookies.get('locale')
     }
   }
 }
