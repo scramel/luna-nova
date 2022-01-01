@@ -153,7 +153,11 @@ body { // Page bg image
   min-width: 100vw;
   transform: translate(calc(50vw - 50%));
   margin: 0 auto;
-  filter: brightness(.5);
+  filter: brightness(.6);
+  transition: .2s;
+  &-1 {
+    filter: hue-rotate(60deg) brightness(.6);
+  }
 }
 
 .f-row { // Flex row

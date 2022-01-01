@@ -1,6 +1,6 @@
 <template>
   <div class="luna-nova"  @wheel="handlePage($event.deltaY >= 0)">
-    <img class="bgimg" alt="Home image" src="@/assets/img/bg-luna-1.jpg">
+    <img class="bgimg" :class="`bgimg-${currentAct}`" alt="Home image" src="@/assets/img/bg-luna-1.jpg">
     <!-- <component :is='component'/> -->
     <Title v-show="currentPage==-1" class="luna-nova-paragraph" :class="pageTurn" :pause="pause" :currentAct="currentAct"/>
     <Pages v-if="currentPage>-1" class="luna-nova-paragraph" :class="pageTurn" :paragraphs="book[currentAct][currentPage]"/>
@@ -14,7 +14,8 @@
         :is-end="currentPage==book[currentAct].length-1"
         :disabled="invisible"
         :pages="book[currentAct].length+1"
-        :currentPage="currentPage"/>
+        :currentPage="currentPage"
+        :currentAct="currentAct"/>
   </div>
 </template>
 
@@ -48,9 +49,8 @@ export default {
                 // Move to next act if it was the end of the current act
                 if (end) {
                     // Go back to menu if the end of text was reached
-                    return this.$router.push(`/`)
-                    // eslint-disable-next-line
-                    if (parseInt(this.$route.query.act) === this.book.length-1) return this.$router.push(`/`)
+                    // if (parseInt(this.$route.query.act) === this.book.length-1) return this.$router.push(`/`)
+                    if (parseInt(this.$route.query.act) === 1) return this.$router.push(`/`)
                     // Else move to the next act
                     this.currentPage = -1
                     this.currentAct += 1

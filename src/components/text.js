@@ -73,12 +73,50 @@ export default (vm) => [
     ], [
         `<p>${ vm.$t('lunanova.ch1.56') }</p>`,
         `<p>${ vm.$t('lunanova.ch1.57') }.</p>`,
+    ]], [[ // ACT 1
+        `<p>${ vm.$t('lunanova.ch2.1') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.2') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.3') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.4') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.5') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.6') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.7') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.8') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.9') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.10') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.11') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.12') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.13') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.14') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.15') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.16') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.17') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.18') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.19') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.20') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.21') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.22') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.23') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.24') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.25') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.26') }</p>`,
+    ], [
+        `<p>${ vm.$t('lunanova.ch2.27') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.28') }</p>`,
+        `<p>${ vm.$t('lunanova.ch2.29') }</p>`,
     ], [
         `<img alt="Darya" src="${require('@/assets/img/darya.png')}">`,
-    ]], [[ // ACT 1
-        `<p>${ vm.$t('lunanova.ch1.55') }</p>`,
-    ], [
-        `<p>${ vm.$t('lunanova.ch1.1') }</p>`,
     ]], [[ // ACT 2
         `<p>${ vm.$t('lunanova.ch1.1') }</p>`,
     ], [

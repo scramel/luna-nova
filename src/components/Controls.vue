@@ -3,7 +3,7 @@
 		<div class="f-row">
 			<button class="btn btn-top" :disabled="disabled" @click="isTitle ? $emit('home') : $emit('prev')">
 				<transition name="fade">
-					<img v-show="isTitle && !disabled" class="arrow arrow-1" alt="Instruction 1" :src="require(`@/assets/img/arrow-1-${locale}.png`)">
+					<img v-show="showInstructions" class="arrow arrow-1" alt="Instruction 1" :src="require(`@/assets/img/arrow-1-${locale}.png`)">
 				</transition>
 				{{ isTitle ? '☽︎' : '▲' }}
 			</button>
@@ -14,24 +14,12 @@
 		<div class="f-row">
 			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('end') : $emit('next')">
 				<transition name="fade">
-					<img v-show="isTitle && !disabled" class="arrow arrow-2" alt="Instruction 2" :src="require(`@/assets/img/arrow-2-${locale}.png`)">
+					<img v-show="showInstructions" class="arrow arrow-2" alt="Instruction 2" :src="require(`@/assets/img/arrow-2-${locale}.png`)">
 				</transition>
 				{{ isEnd ? '☽︎' : '▼' }}
 			</button>
 		</div>
 	</div>
-	<!-- <div class="luna-nova-controls">
-		<div class="luna-nova-buttons">
-			<button :disabled="disabled" @click="$emit('home')" v-if="isTitle">☽︎</button>
-			<button :disabled="disabled" @click="$emit('prev')" v-else>▲</button>
-			<div/>
-			<button :disabled="disabled" @click="$emit('home')" v-if="isEnd">☽︎</button>
-			<button :disabled="disabled" @click="$emit('next')" v-else>▼</button>
-		</div>
-		<div class="luna-nova-carousel">
-			<button v-for="page in pages" :key="page" :class="currentPage == page ? 'active' : ''"/>
-		</div>
-	</div> -->
 </template>
 
 <script>
@@ -41,11 +29,17 @@ export default {
 		isEnd: Boolean,
 		disabled: Boolean,
 		pages: Number,
-		currentPage: Number
+		currentPage: Number,
+		currentAct: Number
 	},
 	data() {
 		return {
 			locale: this.$cookies.get('locale') || 'en'
+		}
+	},
+	computed: {
+		showInstructions() {
+			return this.isTitle && !this.disabled && this.currentAct===0
 		}
 	}
 }
