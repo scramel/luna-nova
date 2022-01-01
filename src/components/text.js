@@ -109,7 +109,7 @@ export default (vm) => [
         `<p>${ vm.$t('lunanova.ch2.23') }</p>`,
     ], [
         `<p>${ vm.$t('lunanova.ch2.24') }</p>`,
-        `<p>${ vm.$t('lunanova.ch2.25') }</p>`,
+        `<p><i>${ vm.$t('lunanova.ch2.25') }</i></p>`,
         `<p>${ vm.$t('lunanova.ch2.26') }</p>`,
     ], [
         `<p>${ vm.$t('lunanova.ch2.27') }</p>`,
