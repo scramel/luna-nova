@@ -1,34 +1,41 @@
 <template>
 	<div class="controls">
+		<!-- top button -->
 		<div class="f-row">
 			<button class="btn btn-top" :disabled="disabled" @click="isTitle ? $emit('home') : $emit('prev')">
+				<!-- "click here to go back" image -->
 				<transition name="fade">
 					<img v-show="showInstructions" class="arrow arrow-1" alt="Instruction 1" :src="require(`@/assets/img/arrow-1-${locale}.png`)">
 				</transition>
 				{{ isTitle ? '☽︎' : '▲' }}
 			</button>
 		</div>
+		<!-- page selector -->
 		<div class="carousel">
 			<button v-for="page in pages" :key="page" :class="currentPage == page-2 ? 'active' : ''" :disabled="disabled" @click="$emit('goTo', page-2)"/>
 		</div>
-		<div class="f-row">
-			<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('end') : $emit('next')">
-				<transition name="fade">
-					<img v-show="showInstructions" class="arrow arrow-2" alt="Instruction 2" :src="require(`@/assets/img/arrow-2-${locale}.png`)">
-				</transition>
-				{{ isEnd ? '☽︎' : '▼' }}
-			</button>
-		</div>
+		<!-- bottom button, it should hide if the end of act4 is reached -->
+		<transition name="fade">
+			<div  v-if="!decisionPage" class="f-row">
+				<button class="btn btn-bottom" :disabled="disabled" @click="isEnd ? $emit('end') : $emit('next')">
+					<!-- "click here to proceed" image -->
+					<transition name="fade">
+						<img v-show="showInstructions" class="arrow arrow-2" alt="Instruction 2" :src="require(`@/assets/img/arrow-2-${locale}.png`)">
+					</transition>
+					{{ isEnd ? '☽︎' : '▼' }}
+				</button>
+			</div>
+		</transition>
 	</div>
 </template>
 
 <script>
 export default {
 	props: {
-		isTitle: Boolean,
-		isEnd: Boolean,
-		disabled: Boolean,
-		pages: Number,
+		isTitle: Boolean, // start of the act (index==0)
+		isEnd: Boolean, // end of the act (index==index length)
+		disabled: Boolean, // disables buttons when transitioning pages
+		pages: Number, // number of pages of the current act
 		currentPage: Number,
 		currentAct: Number
 	},
@@ -38,8 +45,11 @@ export default {
 		}
 	},
 	computed: {
-		showInstructions() {
+		showInstructions() { // conditions for showing cute instructions at the very start of the story
 			return this.isTitle && !this.disabled && this.currentAct===0
+		},
+		decisionPage() { // conditions for hiding the bottom button if the end of act4 is reached
+			return this.currentAct===4 && this.isEnd && !this.$cookies.get('choice')
 		}
 	}
 }
@@ -75,7 +85,12 @@ export default {
 			transition: .2s;
 			font-size: max(1vw, 15px);
 			cursor: pointer;
-			&-top { top: 5vh }
+			&-top { 
+				top: 5vh;
+				@media (max-width: 768px) {
+					top: 4vh;
+				}
+			}
 			&-bottom { 
 				bottom: 5vh;
 				@media (max-width: 768px) {

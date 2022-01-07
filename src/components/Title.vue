@@ -1,12 +1,15 @@
 <template>
 	<div class="f-row">
 		<div class="title">
+			<!-- title goes here -->
 			<h2>{{ $t(`act${currentAct}`) }}</h2>
 			<br>
 			<div>
+				<!-- "listen while reading!" image -->
 				<transition name="fade">
 					<img v-show="currentAct===0" class="arrow arrow-3" alt="Instruction 3" :src="require(`@/assets/img/arrow-3-${$cookies.get('locale') || 'en'}.png`)">
 				</transition>
+				<!-- soundcloud widget -->
 				<iframe
 					:id="`sc-widget`"
 					:src="`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${tracks[currentAct]}
@@ -33,12 +36,12 @@ import SC from "@/scripts/sc-widget.js"
 export default {
 	props: { 
 		currentAct: Number,
-		pause: Number
+		pause: Number // for the soundcloud player
 	},
 	data() {
 		return {
 			widget: null,
-			tracks: [
+			tracks: [ // urls
 				'1181754493%3Fsecret_token%3Ds-uqZwIYIIzy1', // Luna Nova
 				'1181754463%3Fsecret_token%3Ds-HO7N6oetm9j', // Stellar Fields
 				'1181754415%3Fsecret_token%3Ds-Oe5Fp8lR9bk', // Pathway to Ataraxia
@@ -49,13 +52,13 @@ export default {
 		}
 	},
 	watch: {
-		pause() { 
+		pause() {  // pauses music
 			let widget = document.getElementById(`sc-widget`)
 			widget = SC.Widget(widget)
 			widget.pause()
 		}
 	},
-	mounted() {
+	mounted() { // sets the soundcloud player to replay the current track once finished
 		let widget = document.getElementById(`sc-widget`)
 		// let widgets = []
 		// for(let i=0; i<6; i++) { widgets.push(document.getElementById(`sc-widget-${i}`)) }
@@ -63,7 +66,7 @@ export default {
 			widget = SC.Widget(widget)
 			widget.bind(SC.Widget.Events.READY, () => {
 				widget.bind(SC.Widget.Events.FINISH, () => {
-					widget.play() // replays the current track once finished
+					widget.play()
 				});
 			})
 		// })

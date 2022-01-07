@@ -2,8 +2,8 @@
   <div class="credits">
     <div class="f-col">
       <h3>{{ $t('credits') }}</h3>
-      <!-- CREDITS -->
       <ul class="f-col">
+        <!-- contributors -->
         <div v-for="(credit, index) in credits" :key="index">
           <img alt="pfp" :src="require(`@/assets/img/logos/${credit.img}.png`)">
           <li><b>
@@ -13,7 +13,7 @@
             </abbr>
           </b>{{ credit.role }}.</li>
         </div>
-        <!-- ALBUM -->
+        <!-- album -->
         <br>
         <p>{{ $t('thanks') }}</p>
         <br>
@@ -113,7 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .credits { // Styles are a bit messy here, I'll have to fix it eventually.
+  .credits { // html and css are a bit messy in this component, I'll have to remake it eventually.
     flex-direction: row !important;
     font-size: max(1.5vw, 20px);
     p {

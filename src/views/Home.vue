@@ -8,7 +8,7 @@
       <h1>Luna Nova</h1>
       <router-link to="/story?act=0">{{ $t('act0') }}</router-link>
       <router-link to="/story?act=1">{{ $t('act1') }}</router-link>
-      <router-link to="" class="unavailable">{{ $t('act2') }}</router-link>
+      <router-link to="/story?act=2">{{ $t('act2') }}</router-link>
       <router-link to="" class="unavailable">{{ $t('act3') }}</router-link>
       <router-link to="" class="unavailable">{{ $t('act4') }}</router-link>
       <br>

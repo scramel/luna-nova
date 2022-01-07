@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  mounted() { // Sets locale once mounted
+  mounted() { // sets locale once mounted
     this.$i18n.locale = this.$cookies.get('locale') || 'en'
   }
 }
@@ -17,7 +17,7 @@ export default {
 <style lang="scss">
 *,p  { margin: 0; padding: 0; }
 html { background-color: #252525; }
-body { // Page bg image
+body { // page bg image
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -46,7 +46,7 @@ body { // Page bg image
     -3px -3px 0 rgba(0,0,0,.5);
 }
 
-// Custom scrollbar
+// custom scrollbar
 ::-webkit-scrollbar {
   width: 5px;
   @media (max-width: 768px) { width: 3px; }
@@ -64,7 +64,7 @@ body { // Page bg image
   }
 }
 
-#app { // Main app styles
+#app { // main app styles
   font-family: Spectral-Regular, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -117,7 +117,7 @@ body { // Page bg image
   h4 { font-size: max(2vw, 26px);  margin: 0; font-family: spectral; }
 }
 
-#nav { // Navbar -unused-
+#nav { // navbar -unused-
   position: absolute;
   display: flex;
   width: 100%;
@@ -146,21 +146,23 @@ body { // Page bg image
   z-index: 0;
 }
 
-.bgimg { // For centering and scaling background images nicely
+.bgimg { // for centering and scaling background images nicely
   position: fixed;
   object-fit: cover;
   height: 100vh;
   min-width: 100vw;
   transform: translate(calc(50vw - 50%));
   margin: 0 auto;
-  filter: brightness(.6);
-  transition: .2s;
-  &-1 {
-    filter: hue-rotate(60deg) brightness(.6);
-  }
+  filter: brightness(.6) contrast(1.1) saturate(2);
+  &-0 { filter: brightness(.6) contrast(1.1) saturate(2) }
+  &-1 { filter: brightness(.6) contrast(1.1) saturate(2) hue-rotate(60deg); }
+  &-2 { filter: brightness(.6) contrast(1.1) grayscale(1); }
+  &-3 { filter: brightness(.6) contrast(1.1) saturate(2) hue-rotate(110deg); }
+  // &-4 { filter: brightness(.5) contrast(1.1) saturate(3); }
+  // &-4 { filter: brightness(.6) contrast(1.1) hue-rotate(-180deg) invert(1); }
 }
 
-.f-row { // Flex row
+.f-row { // flex row
   display: flex;
   justify-content: center;
   align-items: center;
@@ -169,7 +171,7 @@ body { // Page bg image
   }
 }
 
-.f-col { // Flex column
+.f-col { // flex column
   display: flex;
   justify-content: center;
   align-items: center;
