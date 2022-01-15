@@ -1,9 +1,9 @@
 <template>
     <div class="decision">
-        <p>Así, me dispongo a ver la expresión de la persona al frente mío, y…</p>
-        <button :disabled="choice" @click="($emit('choice', 1))">Veo una sonrisa dibujarse en su rostro.</button>
+        <p>{{ $t('choice.1') }}</p>
+        <button :disabled="choice" @click="($emit('choice', 1))">{{ $t('choice.2') }}</button>
         <br>
-        <button :disabled="choice" @click="($emit('choice', 2))">Puedo ver el desconcierto en su rostro.</button>
+        <button :disabled="choice" @click="($emit('choice', 2))">{{ $t('choice.3') }}</button>
     </div>
 </template>
 

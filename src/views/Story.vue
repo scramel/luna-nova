@@ -56,7 +56,7 @@ export default {
                 // move to next act if it was the end of the current act
                 if (end) {
                     // go back to menu if the end of text was reached
-                    if (parseInt(this.$route.query.act) === 2) return this.$router.push(`/`)
+                    if (parseInt(this.$route.query.act) === 3) return this.$router.push(`/`)
                     // go back to menu if the end of story was reached
                     let act = parseInt(this.$route.query.act)
                     if (act===5 || (act===4 && choice===1)) return this.$router.push(`/credits`)
