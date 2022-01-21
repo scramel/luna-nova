@@ -270,8 +270,34 @@ export default (vm) => [[[ // ACT 0
 ], [
     `<p>${ vm.$t('lunanova.ch7.4') }</p>`,
     `<p>${ vm.$t('lunanova.ch7.5') }</p>`,
-], [
     `<p>${ vm.$t('lunanova.ch7.6') }</p>`,
+], [
     `<p>${ vm.$t('lunanova.ch7.7') }</p>`,
     `<p>${ vm.$t('lunanova.ch7.8') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.9') }</p>`,
+], [
+    `<p>${ vm.$t('lunanova.ch7.10') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.11') }</p>`,
+], [
+    `<p>${ vm.$t('lunanova.ch7.12') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.13') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.14') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.15') }</p>`,
+], [
+    `<p>${ vm.$t('lunanova.ch7.16') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.17') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.18') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.19') }</p>`,
+], [
+    `<p>${ vm.$t('lunanova.ch7.20') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.21') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.22') }</p>`,
+], [
+    `<p>${ vm.$t('lunanova.ch7.23') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.24') }</p>`,
+], [
+    `<p>${ vm.$t('lunanova.ch7.25') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.26') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.27') }</p>`,
+    `<p>${ vm.$t('lunanova.ch7.28') }</p>`,
 ]]]

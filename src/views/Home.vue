@@ -10,7 +10,7 @@
       <router-link to="/story?act=1">{{ $t('act1') }}</router-link>
       <router-link to="/story?act=2">{{ $t('act2') }}</router-link>
       <router-link to="/story?act=3">{{ $t('act3') }}</router-link>
-      <router-link to="" class="unavailable">{{ $t('act4') }}</router-link>
+      <router-link to="/story?act=4">{{ $t('act4') }}</router-link>
       <br>
       <router-link to="" class="unavailable">{{ $t('extras') }}</router-link>
       <router-link to="" @click="toggleLocale">{{ $t('language') }}</router-link>
@@ -32,6 +32,11 @@ export default {
       this.$cookies.set('locale', this.$i18n.locale)
       this.locale = this.$cookies.get('locale')
     }
+  },
+  mounted() {
+    if (this.$cookies.get('locale')) return
+    let locale = navigator.language.slice(0,2)
+    this.$i18n.locale = this.locale = locale
   }
 }
 </script>
