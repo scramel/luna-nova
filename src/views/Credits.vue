@@ -47,6 +47,12 @@ export default {
         }, {
           url: 'https://twitter.com/scramelworks',
           icon: 'twitter'
+        }, {
+          url: 'https://open.spotify.com/artist/5tb0TchU1DOGgRwd0RDZTT',
+          icon: 'spotify'
+        }, {
+          url: 'https://github.com/scramel',
+          icon: 'github'
         }]
       }, {
         name: 'SCAR',

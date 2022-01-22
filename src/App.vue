@@ -9,7 +9,8 @@
 <script>
 export default {
   mounted() { // sets locale once mounted
-    this.$i18n.locale = this.$cookies.get('locale') || 'en'
+    let nav_lang = navigator.language.slice(0,2)
+    this.$i18n.locale = this.$cookies.get('locale') || (['en', 'es'].includes(nav_lang) ? nav_lang : 'en')
   }
 }
 </script>

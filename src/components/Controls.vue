@@ -41,7 +41,7 @@ export default {
 	},
 	data() {
 		return {
-			locale: this.$cookies.get('locale') || 'en'
+			locale: this.$i18n.locale || 'en'
 		}
 	},
 	computed: {

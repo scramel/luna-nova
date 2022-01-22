@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      locale: this.$cookies.get('locale') || 'en'
+      locale: this.$i18n.locale || 'en'
     }
   },
   methods: {
@@ -32,11 +32,6 @@ export default {
       this.$cookies.set('locale', this.$i18n.locale)
       this.locale = this.$cookies.get('locale')
     }
-  },
-  mounted() {
-    if (this.$cookies.get('locale')) return
-    let locale = navigator.language.slice(0,2)
-    this.$i18n.locale = this.locale = locale
   }
 }
 </script>
