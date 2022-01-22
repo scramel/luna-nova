@@ -46,8 +46,11 @@ export default {
         justify-content: center;
         align-content: center;
         cursor: pointer;
+        z-index: 2;
         img {
           margin: auto;
+          width: 100vw;
+          max-width: 1280px;
         }
       }
     }
@@ -65,7 +68,11 @@ export default {
       overflow: auto;
       img {
         max-width: 50vw;
+        transition: .2s;
         cursor: pointer;
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }
