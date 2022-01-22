@@ -263,6 +263,8 @@ export default (vm) => [[[ // ACT 0
 ], [
     `<p>${ vm.$t('lunanova.ch5.26') }</p>`,
     `<p>${ vm.$t('lunanova.ch5.27') }</p>`,
+    // `<link rel="prefetch" :href="require('@/assets/img/arrow-4-${locale}.png')">`
+    // `<img alt="Darya" src="${require('@/assets/img/darya.png')}">`,
 ], []], [[ // ---------------------------------- ENDING
     `<p>${ vm.$t('lunanova.ch7.1') }</p>`,
     `<p>${ vm.$t('lunanova.ch7.2') }</p>`,

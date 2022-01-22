@@ -1,6 +1,9 @@
 <template>
   <div class="luna-nova"  @wheel="handlePage($event.deltaY >= 0)">
-      <!-- background image -->
+    <!-- assets preload -->
+    <link rel="prefetch" :href="require(`@/assets/img/arrow-4-${this.$i18n.locale || 'en'}.png`)">
+    <link rel="prefetch" :href="require(`@/assets/img/arrow-5-${this.$i18n.locale || 'en'}.png`)">
+    <!-- background image -->
     <img class="bgimg" :class="`bgimg-${currentAct}`" alt="Home image" src="@/assets/img/bg-luna-1.jpg">
     <!-- title of the act and soundcloud embed -->
     <Title v-show="currentPage==-1" class="luna-nova-paragraph" :class="pageTurn" :pause="pause" :currentAct="currentAct"/>

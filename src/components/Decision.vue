@@ -4,6 +4,8 @@
         <button :disabled="choice" @click="($emit('choice', 1))">{{ $t('choice.2') }}</button>
         <br>
         <button :disabled="choice" @click="($emit('choice', 2))">{{ $t('choice.3') }}</button>
+		<img v-if="choice" class="arrow arrow-4" alt="Instruction 4" :src="require(`@/assets/img/arrow-5-${$i18n.locale || 'en'}.png`)">
+		<img v-else class="arrow arrow-4" alt="Instruction 4" :src="require(`@/assets/img/arrow-4-${$i18n.locale || 'en'}.png`)">
     </div>
 </template>
 
@@ -19,7 +21,14 @@ export default {
 
 <style lang="scss" scoped>
     .decision {
+        position: relative;
         p { margin-bottom: 5vw !important; }
+        .arrow-4 {
+            position: absolute;
+            top: 50%;
+            width: clamp(250px, 17vw, 350px);
+            @media (max-width: 1200px) { display: none; }
+        }
         button {
             cursor: pointer;
             color: white;
