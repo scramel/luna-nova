@@ -157,7 +157,7 @@ export default {
       list-style-type: none;
       justify-content: flex-start;
       // flex-wrap: wrap;
-      height: 50vh;
+      height: 55vh;
       overflow: auto;
       div {
         // width: 40%;

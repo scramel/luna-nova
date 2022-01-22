@@ -12,7 +12,7 @@
       <router-link to="/story?act=3">{{ $t('act3') }}</router-link>
       <router-link to="/story?act=4">{{ $t('act4') }}</router-link>
       <br>
-      <router-link to="" class="unavailable">{{ $t('extras') }}</router-link>
+      <router-link to="/extras">{{ $t('extras') }}</router-link>
       <router-link to="" @click="toggleLocale">{{ $t('language') }}</router-link>
       <router-link to="/credits">{{ $t('credits') }}</router-link>
     </div>
