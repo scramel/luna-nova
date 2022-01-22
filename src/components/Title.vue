@@ -7,7 +7,7 @@
 			<div>
 				<!-- "listen while reading!" image -->
 				<transition name="fade">
-					<img v-show="currentAct===0" class="arrow arrow-3" alt="Instruction 3" :src="require(`@/assets/img/arrow-3-${$cookies.get('locale') || 'en'}.png`)">
+					<img v-show="currentAct===0" class="arrow arrow-3" alt="Instruction 3" :src="require(`@/assets/img/arrow-3-${$i18n.locale || 'en'}.png`)">
 				</transition>
 				<!-- soundcloud widget -->
 				<iframe
