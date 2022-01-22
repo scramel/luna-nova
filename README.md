@@ -1,4 +1,5 @@
 # luna-nova.git
+Read the story here! https://scramel.github.io/luna-nova
 
 ## Project setup
 ```
