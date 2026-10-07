@@ -1,25 +1,25 @@
 # luna-nova.git
+
 Read the story here! https://scramel.github.io/luna-nova
 
-## Project setup
+## Project setup (NPM required!)
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
-npm run serve
+NODE_OPTIONS=--openssl-legacy-provider npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Deploys to GitHub Pages
 
-### Lints and fixes files
 ```
-npm run lint
+NODE_OPTIONS=--openssl-legacy-provider npm run deploy
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
